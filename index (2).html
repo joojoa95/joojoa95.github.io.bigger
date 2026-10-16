@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1556c7">
+  <meta name="description" content="Build a soundtrack for your occasion with Setlist.">
+  <title>Setlist — soundtrack your occasion</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Setlist home">Setlist<span>.</span></a>
+      <p class="tagline">Describe the occasion and pick a sound. Get a playlist inspired by the way your event unfolds.</p>
+      <form id="playlist-form">
+        <label for="event">What's the event?</label>
+        <textarea id="event" rows="3" required placeholder="e.g. Rooftop birthday for my sister's 30th">Rooftop birthday for my sister's 30th</textarea>
+        <label for="sound">What should it sound like?</label>
+        <input id="sound" type="text" required value="Afrobeats" placeholder="e.g. Afrobeats, indie, jazz">
+        <label for="count">How many songs?</label>
+        <select id="count"><option>5</option><option>10</option><option selected>15</option><option>20</option><option>25</option></select>
+        <button class="make-button" id="make-button" type="submit">Make my playlist <span aria-hidden="true">↗</span></button>
+      </form>
+      <p class="small-note">Tracks are searched in Apple's iTunes music catalog. Available previews are usually up to 30 seconds. No API key is required for standard searches.</p>
+      <div class="sidebar-footer"><span class="pulse"></span> iTunes catalog search</div>
+    </aside>
+    <section class="content">
+      <header class="topbar">
+        <div><div class="eyebrow">YOUR EVENT, YOUR SOUND</div><h1 id="page-title">Set the mood.</h1></div>
+        <div class="apple-mark" aria-label="Music catalog">♫ <span>CATALOG</span></div>
+      </header>
+      <div id="notice" class="notice" role="status" aria-live="polite">Choose an example or customize the details, then make your playlist.</div>
+      <section id="welcome" class="welcome">
+        <div class="welcome-icon">♫</div><h2>Not sure where to start?</h2>
+        <p>Pick an example to fill in the form, then change anything you like.</p>
+        <div class="examples">
+          <button class="example" type="button" data-event="Rooftop birthday for my sister's 30th" data-sound="Afrobeats">✦ Rooftop birthday for my sister's 30th <span>Afrobeats</span></button>
+          <button class="example" type="button" data-event="Study group the night before finals" data-sound="Lo-fi">☾ Study group the night before finals <span>Lo-fi</span></button>
+          <button class="example" type="button" data-event="Road trip with friends on a Friday night" data-sound="Indie">↗ Road trip with friends on a Friday night <span>Indie</span></button>
+          <button class="example" type="button" data-event="Quiet dinner party for eight" data-sound="Jazz">♧ Quiet dinner party for eight <span>Jazz</span></button>
+          <button class="example" type="button" data-event="Morning run before a 10K race" data-sound="Electronic">⚡ Morning run before a 10K race <span>Electronic</span></button>
+        </div>
+      </section>
+      <section id="results-section" class="results-section" hidden>
+        <div class="playlist-heading">
+          <div><div class="eyebrow">YOUR GENERATED SETLIST</div><h2 id="playlist-title">Your playlist</h2><p id="playlist-subtitle"></p></div>
+          <button id="copy-button" class="secondary-button" type="button">Copy track list</button>
+        </div>
+        <div class="stats"><span id="track-count">0 tracks</span><span>Apple iTunes Search API</span><span>Preview-ready tracks marked ▶</span></div>
+        <div id="tracks" class="tracks"></div>
+        <p class="disclaimer">Setlist uses event and genre keywords to find matching catalog tracks. It does not use an external AI model or guarantee an event narrative sequence. Preview playback depends on the preview URL returned by Apple.</p>
+      </section>
+      <footer class="site-footer">Setlist · Independent playlist discovery tool · Music metadata provided by Apple</footer>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
